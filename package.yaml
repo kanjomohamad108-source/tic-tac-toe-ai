@@ -1,0 +1,60 @@
+name:                martian-chess
+version:             1.0
+author:              "Willie Szollmann"
+maintainer:          "w.szollmann@tu-berlin.de"
+copyright:           "2025 TU Berlin - Software and Embedded Systems Engineering (SESE)"
+
+dependencies:
+- base >= 4.7 && < 5
+- split
+- random
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+- -Wno-unused-matches
+- -Wno-missing-export-lists
+- -fno-warn-missing-signatures
+- -fno-warn-name-shadowing
+- -fno-warn-incomplete-patterns
+
+library:
+  source-dirs: src
+
+executables:
+  martian-chess:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - martian-chess
+
+tests:
+  units:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - martian-chess
+    - hspec
+  validate:
+    main:               Spec.hs
+    source-dirs:        validate
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - martian-chess
+    - hspec

@@ -1,0 +1,14 @@
+# image: fpco/stack-build:lts-21.13
+image: haskell:9.4.7-buster  
+
+stages:
+  - validation
+ 
+validation-job:
+  stage: validation
+  script:
+    - src_dir=$(pwd)
+    - /grading/validation.sh $src_dir
+
+  tags:
+    - validation
